@@ -25,7 +25,7 @@ export default function ExperienceSection() {
                 </div>
                 
                 <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  <div className="lg:text-right">
+                  <div>
                     <Card className="bg-card p-6 rounded-lg border border-border hover-lift">
                       <CardContent className="p-0">
                         <div className="space-y-4">
