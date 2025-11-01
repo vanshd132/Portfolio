@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Vansh Dawra",
-  title: "Full Stack Developer",
-  email: "22360@iiitu.ac.in",
+  title: "Software Engineer",
+  email: "vanshji132@gmail.com",
   phone: "+916378661815",
   location: "Una, Himachal Pradesh, India",
   github: "https://github.com/vanshdawra",
@@ -35,12 +35,29 @@ export const experience = [
       "Architected a scalable Medusa.js backend for a healthcare e-commerce platform, supporting 500,000+ products and 1,000+ concurrent requests.",
       "Drove a 15% increase in user acquisition by developing a Next.js virtual staging platform, achieving a 95+ Lighthouse score for SEO and boosting organic traffic by 40%.",
       "Deployed an Algolia recommendation system for a 350,000+ product catalog, increasing user engagement and conversion rates by 15%.",
-      "Led end-to-end development of a cross-platform React Native AI healthcare app with 12+ features like personalised chatbot, AI prescription analysis and Recommendation system called Xsmart, achieving a 99.5% crash-free rate."
+      "Led end-to-end development of a cross-platform React Native AI healthcare app with 12+ features like personalised chatbot, AI prescription analysis and Recommendation system called Xsmart, achieving a 99.5% crash-free rate.",
+      "Developed and deployed Oflisting (https://www.oflisting.com/) - an e-commerce platform serving international customers with multi-country order fulfillment, successfully receiving orders from customers across multiple countries."
     ]
   }
 ];
 
 export const projects = [
+  {
+    name: "BeyondChatsEducation",
+    duration: "Oct. 2024 - Oct. 2024",
+    description: "Interactive Quiz Generator & RAG Chatbot with PDF Analysis - A comprehensive learning platform for students to revise from coursebooks using AI/LLMs.",
+    techStack: ["React", "TypeScript", "Express", "Gemini 2.0", "Pinecone", "MongoDB", "Cloudinary"],
+    achievements: [
+      "Built an AI-powered quiz generator with adaptive question count using Gemini 2.0 Flash, generating MCQ, SAQ, and LAQ questions based on content depth.",
+      "Engineered a RAG-based chatbot with Pinecone vector search and page-based chunking, enabling intelligent PDF conversations with 3-5 context chunks for better responses.",
+      "Architected a triple-storage system (Pinecone + Cloudinary + MongoDB) for PDFs, conversations, and vectors, ensuring 100% data accessibility and graceful degradation.",
+      "Implemented interactive quiz-taking interface with real-time scoring, topic-wise performance analytics, and detailed explanations, achieving production-ready quality."
+    ],
+    links: {
+      demo: "https://assignment-xhbe.vercel.app/",
+      github: "https://github.com/vanshd132/BeyondChatsEducation"
+    }
+  },
   {
     name: "Vision Forge",
     duration: "Feb. 2025 - Mar. 2025",
@@ -54,7 +71,7 @@ export const projects = [
     ],
     links: {
       demo: "#",
-      github: "#"
+      github: "https://github.com/vanshd132/VisionForge"
     }
   },
   {
@@ -68,8 +85,8 @@ export const projects = [
       "Integrated an AI agent that resolved 30+ query types with 92% accuracy, reducing manual support requests by 25%."
     ],
     links: {
-      demo: "#",
-      github: "#"
+      demo: "https://medchainai.vercel.app/",
+      github: "https://github.com/vanshd132/MedChain"
     }
   },
   {
@@ -84,33 +101,46 @@ export const projects = [
     ],
     links: {
       demo: "#",
-      github: "#"
+      github: "https://github.com/vanshd132"
     }
   }
 ];
 
 export const skills = {
-  "Programming Languages": [
-    { name: "JavaScript", level: 90 },
-    { name: "Python", level: 85 },
-    { name: "C/C++", level: 80 }
+  "Programming Languages": ["C", "C++", "JavaScript", "Python"],
+  "AI Concepts": [
+    "Large Language Models (LLMs)",
+    "Retrieval Augmented Generation (RAG)",
+    "AI Chatflows",
+    "AI Agents"
   ],
-  "Web Development": [
-    { name: "React.js/Next.js", level: 90 },
-    { name: "Node.js/Express.js", level: 85 },
-    { name: "MongoDB/PostgreSQL", level: 80 }
+  "Web Development Stack": [
+    "HTML",
+    "Tailwind CSS",
+    "JavaScript",
+    "MongoDB",
+    "Node.js",
+    "Express.js",
+    "React.js",
+    "Next.js",
+    "PostgreSQL",
+    "socket.io (WebSocket)"
   ],
-  "AI/ML & Tools": [
-    { name: "LLMs/RAG Systems", level: 85 },
-    { name: "OpenCV/YOLO", level: 80 },
-    { name: "Git/GitHub", level: 90 }
+  "Databases": ["MongoDB", "PostgreSQL", "Pinecone"],
+  "Python Tools": [
+    "Matplotlib",
+    "Regex",
+    "Numpy",
+    "Ultralytics(YOLO)",
+    "Flask (backend)",
+    "FastAPI (backend)"
+  ],
+  "Tools": [
+    "Git & GitHub",
+    "Flowise (For AI Flows like langchain)",
+    "Pinecone"
   ]
 };
-
-export const additionalTechnologies = [
-  "Tailwind CSS", "React Native", "Flask", "Medusa.js", "Pinecone", 
-  "Algolia", "Tesseract.js", "Stripe", "LangChain", "Flowise"
-];
 
 export const achievements = [
   {

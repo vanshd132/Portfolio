@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
@@ -57,39 +57,22 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="heading-contact">
-            Get In Touch
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-contact-subtitle">
-            I'm always open to discussing new opportunities, interesting projects, or just having a great conversation about technology.
-          </p>
-        </div>
+    <section id="contact" className="py-16 bg-background">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-foreground mb-8 border-b border-border pb-2" data-testid="heading-contact">
+          Contact
+        </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-xl font-semibold text-foreground mb-4" data-testid="heading-lets-connect">
-                Let's Connect
-              </h3>
-              <p className="text-muted-foreground" data-testid="text-connect-description">
-                Whether you're looking for a developer, have a project in mind, or just want to connect, 
-                I'd love to hear from you. Drop me a message and let's start a conversation!
-              </p>
-            </div>
-            
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="space-y-6">
             <div className="space-y-4">
-              <div className="flex items-center space-x-4">
-                <div className="bg-primary/10 p-3 rounded-lg">
-                  <Mail className="h-5 w-5 text-primary" />
-                </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-muted-foreground" />
                 <div>
-                  <p className="font-medium text-foreground">Email</p>
+                  <p className="text-sm text-muted-foreground">Email</p>
                   <a 
                     href={`mailto:${personalInfo.email}`} 
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                    className="text-foreground hover:text-primary transition-colors font-medium"
                     data-testid="link-contact-email"
                   >
                     {personalInfo.email}
@@ -97,15 +80,13 @@ export default function ContactSection() {
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4">
-                <div className="bg-secondary/10 p-3 rounded-lg">
-                  <Phone className="h-5 w-5 text-secondary" />
-                </div>
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-muted-foreground" />
                 <div>
-                  <p className="font-medium text-foreground">Phone</p>
+                  <p className="text-sm text-muted-foreground">Phone</p>
                   <a 
                     href={`tel:${personalInfo.phone}`} 
-                    className="text-muted-foreground hover:text-secondary transition-colors duration-300"
+                    className="text-foreground hover:text-primary transition-colors font-medium"
                     data-testid="link-contact-phone"
                   >
                     {personalInfo.phone}
@@ -113,30 +94,28 @@ export default function ContactSection() {
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4">
-                <div className="bg-accent/10 p-3 rounded-lg">
-                  <MapPin className="h-5 w-5 text-accent" />
-                </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="h-5 w-5 text-muted-foreground" />
                 <div>
-                  <p className="font-medium text-foreground">Location</p>
-                  <p className="text-muted-foreground" data-testid="text-contact-location">{personalInfo.location}</p>
+                  <p className="text-sm text-muted-foreground">Location</p>
+                  <p className="text-foreground font-medium" data-testid="text-contact-location">{personalInfo.location}</p>
                 </div>
               </div>
             </div>
             
-            <div className="flex space-x-4">
-              <a 
-                href={personalInfo.github} 
-                className="bg-card p-3 rounded-lg border border-border hover:bg-muted transition-colors duration-300"
+            <div className="flex gap-3 pt-2">
+              <a
+                href={personalInfo.github}
+                className="p-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
                 data-testid="link-contact-github"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <Github className="h-5 w-5" />
               </a>
-              <a 
-                href={personalInfo.linkedin} 
-                className="bg-card p-3 rounded-lg border border-border hover:bg-muted transition-colors duration-300"
+              <a
+                href={personalInfo.linkedin}
+                className="p-2 rounded-lg border border-border hover:border-primary hover:text-primary transition-colors"
                 data-testid="link-contact-linkedin"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -146,7 +125,8 @@ export default function ContactSection() {
             </div>
           </div>
           
-          <Card className="bg-card p-8 rounded-lg border border-border">
+          <div>
+            <Card className="border border-border">
             <CardContent className="p-0">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -215,15 +195,26 @@ export default function ContactSection() {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300"
+                  className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
                   disabled={isSubmitting}
                   data-testid="button-contact-submit"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? (
+                    <>
+                      <Send className="mr-2 h-4 w-4" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-4 w-4" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
               </form>
             </CardContent>
           </Card>
+          </div>
         </div>
       </div>
     </section>

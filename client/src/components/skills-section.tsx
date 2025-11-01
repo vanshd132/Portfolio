@@ -1,103 +1,73 @@
-import { skills, additionalTechnologies } from "@/data/portfolio-data";
-import { Card, CardContent } from "@/components/ui/card";
+import { skills } from "@/data/portfolio-data";
 import { Badge } from "@/components/ui/badge";
-import { useEffect, useRef } from "react";
 
 export default function SkillsSection() {
-  const skillRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const progressBar = entry.target.querySelector('.skill-progress') as HTMLElement;
-            if (progressBar) {
-              const width = progressBar.getAttribute('data-width');
-              if (width) {
-                progressBar.style.width = '0%';
-                setTimeout(() => {
-                  progressBar.style.width = width;
-                }, 100);
-              }
-            }
-          }
-        });
+  const getCategoryColor = (category: string) => {
+    const colorMap: Record<string, { border: string; title: string; badge: string }> = {
+      "Programming Languages": {
+        border: "border-blue-500/50",
+        title: "text-blue-400",
+        badge: "bg-blue-500/20 text-blue-300 border-blue-500/30"
       },
-      { threshold: 0.5 }
-    );
-
-    skillRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+      "AI Concepts": {
+        border: "border-purple-500/50",
+        title: "text-purple-400",
+        badge: "bg-purple-500/20 text-purple-300 border-purple-500/30"
+      },
+      "Web Development Stack": {
+        border: "border-green-500/50",
+        title: "text-green-400",
+        badge: "bg-green-500/20 text-green-300 border-green-500/30"
+      },
+      "Databases": {
+        border: "border-orange-500/50",
+        title: "text-orange-400",
+        badge: "bg-orange-500/20 text-orange-300 border-orange-500/30"
+      },
+      "Python Tools": {
+        border: "border-yellow-500/50",
+        title: "text-yellow-400",
+        badge: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30"
+      },
+      "Tools": {
+        border: "border-cyan-500/50",
+        title: "text-cyan-400",
+        badge: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30"
+      }
+    };
+    return colorMap[category] || { border: "border-border", title: "text-foreground", badge: "bg-muted text-foreground border-border" };
+  };
 
   return (
-    <section id="skills" className="py-20 bg-muted/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4" data-testid="heading-skills">
-            Technical Skills
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-skills-subtitle">
-            My technical expertise spans across various programming languages, frameworks, and tools.
-          </p>
-        </div>
+    <section id="skills" className="py-16 bg-background">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-foreground mb-8 border-b border-border pb-2">
+          Skills & Technologies
+        </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {Object.entries(skills).map(([category, skillList], categoryIndex) => (
-            <Card key={category} className="bg-card p-6 rounded-lg border border-border hover-lift">
-              <CardContent className="p-0">
-                <h3 className="text-lg font-semibold text-foreground mb-4" data-testid={`heading-skill-category-${categoryIndex}`}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {Object.entries(skills).map(([category, skillList], categoryIndex) => {
+            const colors = getCategoryColor(category);
+            return (
+              <div key={category} className={`border-2 ${colors.border} rounded-lg p-6 bg-card hover:shadow-lg transition-shadow`}>
+                <h3 className={`text-lg font-semibold mb-4 ${colors.title}`} data-testid={`skill-category-${categoryIndex}`}>
                   {category}
                 </h3>
-                <div className="space-y-4">
+                <div className="flex flex-wrap gap-2">
                   {skillList.map((skill, skillIndex) => (
-                    <div 
-                      key={skill.name}
-                      ref={(el) => { skillRefs.current[categoryIndex * 10 + skillIndex] = el; }}
+                    <Badge 
+                      key={skillIndex}
+                      variant="outline"
+                      className={`text-xs px-3 py-1 font-normal border ${colors.badge}`}
+                      data-testid={`skill-${categoryIndex}-${skillIndex}`}
                     >
-                      <div className="flex justify-between mb-2">
-                        <span className="text-sm text-muted-foreground" data-testid={`text-skill-name-${categoryIndex}-${skillIndex}`}>
-                          {skill.name}
-                        </span>
-                        <span className="text-sm text-muted-foreground" data-testid={`text-skill-level-${categoryIndex}-${skillIndex}`}>
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="skill-bar">
-                        <div 
-                          className="skill-progress" 
-                          data-width={`${skill.level}%`}
-                          data-testid={`progress-skill-${categoryIndex}-${skillIndex}`}
-                        ></div>
-                      </div>
-                    </div>
+                      {skill}
+                    </Badge>
                   ))}
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        
-        <div className="mt-12">
-          <h3 className="text-lg font-semibold text-foreground mb-6 text-center" data-testid="heading-additional-technologies">
-            Additional Technologies
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {additionalTechnologies.map((tech, index) => (
-              <Badge 
-                key={tech} 
-                variant={index % 3 === 0 ? "default" : index % 3 === 1 ? "secondary" : "outline"}
-                className="text-sm"
-                data-testid={`badge-additional-tech-${index}`}
-              >
-                {tech}
-              </Badge>
-            ))}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
