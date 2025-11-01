@@ -22,29 +22,52 @@ export default function SuccessfulProductsSection() {
         label: "Data Processed",
         value: "30,000+ Prescriptions"
       }
+    },
+    {
+      name: "AI Healthcare App",
+      description: "Led development of a customized AI chatbot for a healthcare mobile app along with Algolia-based recommendation system for 350,000+ medicines and lab tests, personalized for each user.",
+      images: ["/WondrX1.jpg", "/WondrX2.jpg"],
+      url: "#",
+      stats: {
+        label: "Products Catalog",
+        value: "350,000+ Items"
+      }
     }
   ];
 
   return (
-    <section id="successful-products" className="py-16 bg-background">
+    <section id="successful-products" className="py-12 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-foreground mb-8 border-b border-border pb-2">
           Successful Products Made
         </h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {products.map((product, index) => (
             <div
               key={index}
-              className="border border-border rounded-lg overflow-hidden bg-card hover:border-primary/50 transition-all hover:shadow-lg"
+              className="border border-border rounded-lg overflow-hidden bg-card hover:border-primary/50 transition-all hover:shadow-lg flex flex-col"
             >
               {/* Product Image */}
-              <div className="relative h-64 overflow-hidden bg-muted">
-                <img 
-                  src={product.image} 
-                  alt={product.name}
-                  className="w-full h-full object-contain"
-                />
+              <div className={`relative overflow-hidden bg-muted ${product.images ? 'h-96' : 'h-80'}`}>
+                {product.images ? (
+                  <div className="flex gap-1 h-full p-2">
+                    {product.images.map((img, imgIndex) => (
+                      <img 
+                        key={imgIndex}
+                        src={img} 
+                        alt={`${product.name} ${imgIndex + 1}`}
+                        className="flex-1 h-full object-cover rounded"
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <img 
+                    src={product.image} 
+                    alt={product.name}
+                    className="w-full h-full object-contain"
+                  />
+                )}
                 {product.url !== "#" && (
                   <div className="absolute top-4 right-4">
                     <a

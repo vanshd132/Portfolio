@@ -30,7 +30,7 @@ export default function AchievementsSection() {
   };
 
   return (
-    <section id="achievements" className="py-16 bg-background">
+    <section id="achievements" className="py-12 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-foreground mb-8 border-b border-border pb-2" data-testid="heading-achievements">
           Achievements

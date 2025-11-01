@@ -90,7 +90,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="py-16 bg-muted/30">
+    <section className="py-12 bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-foreground mb-8 border-b border-border pb-2">
           By The Numbers
