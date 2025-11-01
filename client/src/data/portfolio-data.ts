@@ -27,7 +27,7 @@ export const education = [
 
 export const experience = [
   {
-    position: "Full Stack Developer Intern",
+    position: "Full Stack Developer",
     company: "QuickIntell",
     duration: "Mar 2025 - Present",
     achievements: [
